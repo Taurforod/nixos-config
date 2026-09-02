@@ -1,0 +1,15 @@
+# modules/home/niri/misc.nix
+{ pkgs, ... }:
+''
+  prefer-no-csd
+
+  cursor {
+      xcursor-theme "catppuccin-mocha-mauve-cursors"
+      xcursor-size 24
+  }
+
+  debug {
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+    }
+''

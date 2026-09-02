@@ -1,0 +1,82 @@
+{
+    "output": {
+        "blocklist": [],
+        "equalizer#0": {
+            "balance": 0.0,
+            "bypass": false,
+            "input-gain": 0.0,
+            "left": {
+                "band0": {
+                    "frequency": 8000.0,
+                    "gain": -3.0,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.0,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell",
+                    "width": 4.0
+                },
+                "band1": {
+                    "frequency": 17000.0,
+                    "gain": 0.0,
+                    "mode": "BWC (BT)",
+                    "mute": false,
+                    "q": 0.71,
+                    "slope": "x4",
+                    "solo": false,
+                    "type": "Lo-pass",
+                    "width": 4.0
+                }
+            },
+            "mode": "IIR",
+            "num-bands": 2,
+            "output-gain": 0.0,
+            "pitch-left": 0.0,
+            "pitch-right": 0.0,
+            "right": {
+                "band0": {
+                    "frequency": 8000.0,
+                    "gain": -3.0,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 2.0,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell",
+                    "width": 4.0
+                },
+                "band1": {
+                    "frequency": 17000.0,
+                    "gain": 0.0,
+                    "mode": "BWC (BT)",
+                    "mute": false,
+                    "q": 0.71,
+                    "slope": "x4",
+                    "solo": false,
+                    "type": "Lo-pass",
+                    "width": 4.0
+                }
+            },
+            "split-channels": false
+        },
+        "filter#0": {
+            "balance": 0.0,
+            "bypass": false,
+            "equal-mode": "IIR",
+            "frequency": 17000.0,
+            "gain": 0.0,
+            "input-gain": 0.0,
+            "mode": "BWC (BT)",
+            "output-gain": 0.0,
+            "quality": 0.0,
+            "slope": "x2",
+            "type": "Low-pass",
+            "width": 4.0
+        },
+        "plugins_order": [
+            "equalizer#0",
+            "filter#0"
+        ]
+    }
+}
