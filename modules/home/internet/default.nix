@@ -7,14 +7,6 @@
     ./firefox.nix
   ];
 
-  programs.discord = {
-    enable = true;
-    package = pkgs-unstable.discord;
-    settings = {
-      SKIP_HOST_UPDATE = true;
-    };
-  };
-
   xdg.desktopEntries.firefoxpwa = {
     name = "firefoxpwa";
     noDisplay = true;
