@@ -1,0 +1,29 @@
+prefix_rule(
+    pattern = ["sudo"],
+    decision = "forbidden",
+    justification = "Codex must never use sudo in this repository.",
+)
+
+prefix_rule(
+    pattern = ["nixos-rebuild"],
+    decision = "forbidden",
+    justification = "Codex must not rebuild or activate the NixOS system.",
+)
+
+prefix_rule(
+    pattern = ["nh", "os", ["switch", "boot", "test"]],
+    decision = "forbidden",
+    justification = "Codex must not activate or test a system generation.",
+)
+
+prefix_rule(
+    pattern = ["nh", "os", "build"],
+    decision = "prompt",
+    justification = "Building the NixOS configuration requires explicit user approval.",
+)
+
+prefix_rule(
+    pattern = ["nix"],
+    decision = "prompt",
+    justification = "Nix validation commands require explicit user approval.",
+)
