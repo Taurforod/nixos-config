@@ -21,13 +21,18 @@
 
   stylix = {
     enable = true;
+
+    # Все цели включаются только явно.
     autoEnable = false;
     enableReleaseChecks = false;
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     image = pkgs.runCommand "bg.png" {} ''
-      ${pkgs.imagemagick}/bin/convert -size 1920x1080 xc:"#1e1e2e" $out
+      ${pkgs.imagemagick}/bin/convert \
+        -size 1920x1080 \
+        xc:"#1e1e2e" \
+        "$out"
     '';
 
     cursor = {
@@ -41,10 +46,12 @@
         package = pkgs.inter;
         name = "Inter";
       };
+
       sansSerif = {
         package = pkgs.inter;
         name = "Inter";
       };
+
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
         name = "JetBrainsMono Nerd Font";
@@ -69,8 +76,15 @@
       chromium.enable = true;
       console.enable = true;
       gnome.enable = true;
+
+      # На уровне NixOS включает инфраструктуру dconf,
+      # необходимую пользовательской GTK-конфигурации.
       gtk.enable = true;
-      qt.enable = true; # Полная изоляция Plasma/Qt от Stylix
+
+      # Системная интеграция Qt с установленной Plasma.
+      # Пользовательская цветовая стилизация Qt отдельно
+      # отключена в common.nix.
+      qt.enable = true;
     };
   };
 }
