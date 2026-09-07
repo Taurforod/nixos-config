@@ -1,7 +1,9 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
+  imports = [
+    ./networking
+  ];
 
-  services.fwupd.enable = true;       # Проверка и обновление прошивок оборудования
-
+  services.fwupd.enable = true; # Проверка и обновление прошивок оборудования
 
   # Включение ZeroTier One
   services.zerotierone = {
