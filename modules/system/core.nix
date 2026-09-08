@@ -171,10 +171,7 @@
       catppuccin-cursors.mochaMauve
     ])
     ++ [
-      (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (oldAttrs: {
-        NIX_ENFORCE_NO_NATIVE = 0;
-        NIX_CFLAGS_COMPILE = oldAttrs.NIX_CFLAGS_COMPILE or "" + " -march=native -O3";
-      }))
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
   fonts = {
