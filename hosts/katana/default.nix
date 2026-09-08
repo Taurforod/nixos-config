@@ -5,7 +5,7 @@
     ../../modules/hardware/nvidia.nix # Базовый драйвер NVIDIA
     ../../modules/hardware/nvidia-prime.nix # Дополняем гибридной графикой
     ../../modules/system/games.nix
-    ../../modules/system/laptop.nix
+    ../../modules/system/devices/laptop.nix
   ];
 
   # Bootloader.

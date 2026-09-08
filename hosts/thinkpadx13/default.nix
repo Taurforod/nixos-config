@@ -3,7 +3,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system/games.nix
-    ../../modules/system/laptop.nix
+    ../../modules/system/devices/laptop.nix
   ];
 
   # Bootloader.

@@ -7,11 +7,10 @@
 }: {
   imports = [
     inputs.noctalia-greeter.nixosModules.default
+    ./devices
     ./flatpak.nix
     ./greeter.nix
     ./networking
-    ./printers.nix
-    ./services.nix
     ./theme.nix
     ./thunar.nix
   ];
@@ -81,23 +80,6 @@
 
   programs.dconf.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true; # Включать адаптер при загрузке
-  };
-
-  # Звук
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true; # Нужно для приложений, завязанных на JACK/низкий задержки
-    wireplumber.enable = true; # Управляет виртуальными источниками (EasyEffects) и маршрутизацией
-  };
-
   # Описание учетной записи пользователя
   users.users.${username} = {
     isNormalUser = true;
@@ -122,6 +104,13 @@
       enable = true;
       extraArgs = "--keep 10 --keep-since 14d";
     };
+  };
+
+  # Отключено: ananicy-cpp тестировался для приоритетов процессов, временно не используется.
+  services.ananicy = {
+    enable = false;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
   };
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
