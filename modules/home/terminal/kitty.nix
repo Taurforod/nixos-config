@@ -23,7 +23,7 @@
       input_delay = 1;
 
       # Протокол управления
-      allow_remote_control = "yes";
+      allow_remote_control = "no";
       listen_on = "unix:$XDG_RUNTIME_DIR/mykitty.sock";
 
       # Звук и мышь
