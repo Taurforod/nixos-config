@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./networking
   ];
 
   services.fwupd.enable = true; # Проверка и обновление прошивок оборудования

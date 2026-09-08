@@ -7,25 +7,14 @@
 }: {
   imports = [
     inputs.noctalia-greeter.nixosModules.default
-    ./greeter.nix
     ./flatpak.nix
+    ./greeter.nix
+    ./networking
     ./printers.nix
     ./services.nix
     ./theme.nix
     ./thunar.nix
   ];
-
-  # Сеть, часовой пояс и локализация
-  networking = {
-    networkmanager.enable = true;
-
-    # Настройка фаервола
-    firewall = {
-      enable = true;
-    };
-  };
-
-  programs.mtr.enable = true;
 
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "ru_RU.UTF-8";
