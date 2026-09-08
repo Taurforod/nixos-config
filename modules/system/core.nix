@@ -112,7 +112,7 @@
   # Описание учетной записи пользователя
   users.users.${username} = {
     isNormalUser = true;
-    description = "Taurforod";
+    description = lib.toSentenceCase username;
     home = "/home/${username}";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.fish;
