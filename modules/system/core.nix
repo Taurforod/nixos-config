@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   lib,
+  username,
   ...
 }: {
   imports = [
@@ -109,9 +110,10 @@
   };
 
   # Описание учетной записи пользователя
-  users.users."taurforod" = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Taurforod";
+    home = "/home/${username}";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.fish;
   };
