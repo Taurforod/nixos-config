@@ -17,6 +17,16 @@
     hicolor-icon-theme
     librsvg
     shared-mime-info
+
+    (catppuccin-gtk.override {
+      accents = ["lavender"];
+      variant = "mocha";
+    })
+
+    kdePackages.qtstyleplugin-kvantum
+    kdePackages.qt6ct
+    libsForQt5.qtstyleplugin-kvantum
+    catppuccin-cursors.mochaMauve
   ];
 
   stylix = {

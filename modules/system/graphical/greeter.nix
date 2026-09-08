@@ -1,19 +1,29 @@
-{ pkgs, config, ... }:
-
-let
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}: let
   # Берем итоговые настройки после слияния базового модуля и конфигурации конкретного хоста
   cfgSettings = config.programs.noctalia-greeter.settings;
 
   # Автоматически добавляем корректный путь к курсору в структуру TOML
-  finalSettings = cfgSettings // {
-    cursor = (cfgSettings.cursor or { }) // {
-      path = "${pkgs.catppuccin-cursors.mochaMauve}/share/icons";
+  finalSettings =
+    cfgSettings
+    // {
+      cursor =
+        (cfgSettings.cursor or {})
+        // {
+          path = "${pkgs.catppuccin-cursors.mochaMauve}/share/icons";
+        };
     };
-  };
 
-  greeterToml = (pkgs.formats.toml { }).generate "greeter.toml" finalSettings;
-in
-{
+  greeterToml = (pkgs.formats.toml {}).generate "greeter.toml" finalSettings;
+in {
+  imports = [
+    inputs.noctalia-greeter.nixosModules.default
+  ];
+
   # Базовые настройки ПО УМОЛЧАНИЮ для всех компьютеров
   programs.noctalia-greeter = {
     enable = true;

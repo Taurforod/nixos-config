@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   services.tumbler.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   programs.thunar = {
     enable = true;
@@ -12,5 +14,6 @@
   environment.systemPackages = with pkgs; [
     file-roller
     ffmpegthumbnailer
+    udiskie
   ];
 }
