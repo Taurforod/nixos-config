@@ -1,24 +1,32 @@
+# Shared NVIDIA configuration for Desktop and Katana.
 {config, ...}: {
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.graphics = {
     enable = true;
+    # Enable graphics support for 32-bit applications, including games.
     enable32Bit = true;
   };
 
-  # 4. Базовые настройки NVIDIA (без гибридной специфики)
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true; # Нормальный сон/пробуждение ПК
-    open = true; # Подходит и для 4060, и для 3080 Ti (серии RTX)
+    # Enable NVIDIA power management for suspend and resume.
+    powerManagement.enable = true;
+
+    # Use NVIDIA's open-source kernel modules.
+    open = true;
     nvidiaSettings = true;
+
+    # Select the driver from the host's chosen kernel package set.
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
-  # Переменные окружения для поддержки NVIDIA в Wayland, Niri и Electron
   environment.sessionVariables = {
+    # Select NVIDIA backends for VA-API and GLX.
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+
+    # Request native Wayland support in applications that honor this Nixpkgs flag.
     NIXOS_OZONE_WL = "1";
   };
 }
