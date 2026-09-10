@@ -1,20 +1,20 @@
+# Host-specific NixOS settings; flake.nix also loads modules/system/core.nix.
 {pkgs, ...}: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/system/games.nix
     ../../modules/system/devices/laptop.nix
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
+  # Use the latest kernel provided by the flake's pinned stable nixpkgs input.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "thinkpadx13"; # Define your hostname.
+  networking.hostName = "thinkpadx13";
 
+  # Compatibility baseline for stateful NixOS defaults; do not bump on routine upgrades.
   system.stateVersion = "26.05";
 
   services.power-profiles-daemon.enable = true;
