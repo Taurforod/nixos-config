@@ -1,17 +1,20 @@
-# modules/home/niri/default.nix
-{ config, lib, pkgs, ... }:
-
-let
+# Assemble the shared Niri configuration with display settings from hosts/<name>/home.nix.
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.myNiri;
 
-  autostart = import ./autostart.nix { inherit pkgs; };
-  input     = import ./input.nix     { inherit pkgs; };
-  keybinds  = import ./keybinds.nix  { inherit pkgs; };
-  layout    = import ./layout.nix    { inherit pkgs; };
-  misc      = import ./misc.nix      { inherit pkgs; };
-  rules     = import ./rules.nix     { inherit pkgs; };
-in
-{
+  # These files return KDL text rather than Home Manager modules.
+  autostart = import ./autostart.nix {inherit pkgs;};
+  input = import ./input.nix {inherit pkgs;};
+  keybinds = import ./keybinds.nix {inherit pkgs;};
+  layout = import ./layout.nix {inherit pkgs;};
+  misc = import ./misc.nix {inherit pkgs;};
+  rules = import ./rules.nix {inherit pkgs;};
+in {
   options.myNiri = {
     enable = lib.mkEnableOption "Niri WM Configuration";
 
@@ -23,7 +26,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Переменные окружения применяются автоматически для любого хоста, где включен myNiri.enable = true;
+    # User-wide session variables enabled with myNiri; these are not scoped to Niri startup.
     home.sessionVariables = {
       QT_QPA_PLATFORM = "wayland";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
@@ -32,17 +35,8 @@ in
       NIRI_CONFIG_BG_COLOR = "transparent";
     };
 
-    # Настройка курсора через Home Manager
-    # home.pointerCursor = {
-    #   name = "catppuccin-mocha-mauve-cursors";
-    #   package = pkgs.catppuccin-cursors.mochaMauve;
-    #   size = 24;
-    #   gtk.enable = true;
-    #   x11.enable = true;
-    # };
-
     xdg.configFile."niri/config.kdl" = {
-      force = true;
+      force = true; # Replace an existing config.kdl when activating Home Manager.
       text = ''
         // ==========================================
         // HOST DISPLAY CONFIG

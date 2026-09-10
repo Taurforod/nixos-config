@@ -3,7 +3,7 @@
     godot
   ];
 
-  # Декларативная цветовая схема для встроенного редактора Godot 4
+  # Install the text editor theme; select Catppuccin-Mocha in Godot's editor settings.
   xdg.configFile."godot/text_editor_themes/Catppuccin-Mocha.tet".text = ''
     [color_theme]
 
@@ -51,10 +51,9 @@
     gdscript/string_name_color="cdd6f4ff"
   '';
 
-  # Шпаргалка для настройки GUI в самом Godot (Editor Settings -> Interface -> Theme):
+  # Optional manual UI settings in Editor Settings -> Interface -> Theme:
   # Base Color:       #1e1e2e
   # Accent Color:     #cba6f7
   # Contrast:         0.2
   # Icon Saturation:  0.6
-  # Text Editor Theme: Catppuccin-Mocha
 }

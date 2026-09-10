@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.micro = {
     enable = true;
 
@@ -18,7 +16,7 @@
     };
   };
 
-  # Вшиваем тему Catppuccin Mocha прямо в конфиг (без сети и без хэшей)
+  # Define the selected color scheme locally instead of downloading a theme file.
   xdg.configFile."micro/colorschemes/catppuccin-mocha.micro".text = ''
     color-link default "#cdd6f4,#1e1e2e"
     color-link comment "#6c7086"

@@ -1,17 +1,17 @@
 {...}: {
   programs.yazi = {
     enable = true;
-    enableFishIntegration = true; # Включает удобную функцию cd при выходе из yazi
+    enableFishIntegration = true; # Use the `y` wrapper to change directory when exiting Yazi.
 
     settings = {
       manager = {
-        show_hidden = true; # Показывать скрытые файлы (.)
+        show_hidden = true;
         sort_by = "alphabetical";
-        sort_dir_first = true; # Папки всегда вверху списка
+        sort_dir_first = true;
       };
     };
   };
 
-  # xdg находится на верхнем уровне Home Manager
+  # Load the full theme from the adjacent TOML file.
   xdg.configFile."yazi/theme.toml".source = ./theme.toml;
 }

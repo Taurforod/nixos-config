@@ -2,10 +2,10 @@
   programs.fish = {
     enable = true;
 
-    # Срабатывает ТОЛЬКО при открытии интерактивного терминала
+    # Hide the greeting and show system information in interactive Fish shells.
     interactiveShellInit = ''
       set -g fish_greeting ""
-      fastfetch               # Выводим инфо о системе при старте
+      fastfetch
     '';
 
     shellAliases = {
@@ -15,6 +15,8 @@
     };
 
     functions = {
+      # Usage: rebuild [host]; defaults to the current hostname.
+      # Builds and switches this machine using the checkout at ~/nixos-config.
       rebuild = ''
         set -l host $argv[1]
         test -z "$host"; and set host (hostname)

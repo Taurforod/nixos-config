@@ -1,6 +1,4 @@
-{ ... }:
-
-let
+{...}: let
   boxTop = {
     type = "custom";
     format = "┌───────────────────────────────────────────────────────┐";
@@ -9,13 +7,13 @@ let
     type = "custom";
     format = "└───────────────────────────────────────────────────────┘";
   };
-in
-{
+in {
   programs.fastfetch = {
     enable = true;
     settings = {
       logo = {
         source = "${../../../assets/fastfetch/On-an-Open-Bonfire.png}";
+        # Display the logo through the Kitty graphics protocol.
         type = "kitty";
         width = 32;
         height = 16;
@@ -29,35 +27,108 @@ in
       display.separator = " : ";
 
       modules = [
-        # Блок 1: Система и софт
+        # System and software.
         boxTop
-        { type = "chassis"; key = "  󰇺 Chassis"; format = "{1} {2} {3}"; }
-        { type = "os"; key = "  󰣇 OS"; format = "{2}"; keyColor = "red"; }
-        { type = "kernel"; key = "   Kernel"; format = "{2}"; keyColor = "red"; }
-        { type = "packages"; key = "  󰏗 Packages"; keyColor = "green"; }
-        { type = "display"; key = "  󰍹 Display"; format = "{1}x{2} @ {3}Hz [{7}]"; keyColor = "green"; }
-        { type = "terminal"; key = "   Terminal"; keyColor = "yellow"; }
-        { type = "wm"; key = "  󱗃 WM"; format = "{2}"; keyColor = "yellow"; }
+        {
+          type = "chassis";
+          key = "  󰇺 Chassis";
+          format = "{1} {2} {3}";
+        }
+        {
+          type = "os";
+          key = "  󰣇 OS";
+          format = "{2}";
+          keyColor = "red";
+        }
+        {
+          type = "kernel";
+          key = "   Kernel";
+          format = "{2}";
+          keyColor = "red";
+        }
+        {
+          type = "packages";
+          key = "  󰏗 Packages";
+          keyColor = "green";
+        }
+        {
+          type = "display";
+          key = "  󰍹 Display";
+          format = "{1}x{2} @ {3}Hz [{7}]";
+          keyColor = "green";
+        }
+        {
+          type = "terminal";
+          key = "   Terminal";
+          keyColor = "yellow";
+        }
+        {
+          type = "wm";
+          key = "  󱗃 WM";
+          format = "{2}";
+          keyColor = "yellow";
+        }
         boxBottom
 
         "break"
 
-        # Имя пользователя и хост
-        { type = "title"; key = "  "; format = "{6} {7} {8}"; }
+        # User and host.
+        {
+          type = "title";
+          key = "  ";
+          format = "{6} {7} {8}";
+        }
 
-        # Блок 2: Железо и ресурсы
+        # Hardware and resources.
         boxTop
-        { type = "cpu"; key = "   CPU"; format = "{1} @ {7}"; keyColor = "blue"; }
-        { type = "gpu"; key = "  󰊴 GPU"; format = "{1} {2}"; keyColor = "blue"; }
-        { type = "gpu"; key = "   GPU Driver"; format = "{3}"; keyColor = "magenta"; }
-        { type = "sound"; key = "  󰓃 Sound"; format = "{name}"; keyColor = "34"; }
-        { type = "memory"; key = "   Memory "; keyColor = "magenta"; }
-        { type = "disk"; key = "  󱦟 OS Age "; folders = "/"; format = "{days} days"; keyColor = "red"; }
-        { type = "uptime"; key = "  󱫐 Uptime "; keyColor = "red"; }
+        {
+          type = "cpu";
+          key = "   CPU";
+          format = "{1} @ {7}";
+          keyColor = "blue";
+        }
+        {
+          type = "gpu";
+          key = "  󰊴 GPU";
+          format = "{1} {2}";
+          keyColor = "blue";
+        }
+        {
+          type = "gpu";
+          key = "   GPU Driver";
+          format = "{3}";
+          keyColor = "magenta";
+        }
+        {
+          type = "sound";
+          key = "  󰓃 Sound";
+          format = "{name}";
+          keyColor = "34";
+        }
+        {
+          type = "memory";
+          key = "   Memory ";
+          keyColor = "magenta";
+        }
+        {
+          type = "disk";
+          key = "  󱦟 OS Age ";
+          folders = "/";
+          format = "{days} days";
+          keyColor = "red";
+        }
+        {
+          type = "uptime";
+          key = "  󱫐 Uptime ";
+          keyColor = "red";
+        }
         boxBottom
 
-        # Палитра
-        { type = "colors"; paddingLeft = 2; symbol = "circle"; }
+        {
+          type = "colors";
+          paddingLeft = 2;
+          symbol = "circle";
+        }
         "break"
       ];
     };

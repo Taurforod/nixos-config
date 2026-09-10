@@ -1,13 +1,7 @@
-# modules/home/niri/keybinds.nix
-{ pkgs, ... }:
-''
+{pkgs, ...}: ''
   binds {
 
-      // ────────────── Keybindings ──────────────
       // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
-
-      // ─── noctalia-shell keybinds ───
-      // https://docs.noctalia.dev/v5/ipc/
 
       Mod+Shift+Escape              { show-hotkey-overlay; }
 
@@ -15,11 +9,12 @@
       Mod+Return                    hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
       Mod+B                         hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
       Mod+Shift+E                   hotkey-overlay-title="Open IDE: Zed" { spawn "zeditor"; }
+
+      // https://docs.noctalia.dev/v5/ipc/
       Mod+Ctrl+Return               hotkey-overlay-title="Open App Launcher: Noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
       Mod+Alt+L                     hotkey-overlay-title="Lock Screen: Noctalia lock" { spawn-sh "noctalia msg session lock"; }
       Mod+Shift+Q                   hotkey-overlay-title="Session Menu: Noctalia sessionMenu" { spawn-sh "noctalia msg panel-toggle session"; }
 
-      // Please choose your own file manager.
       Mod+E                         hotkey-overlay-title="File Manager: Thunar" { spawn "thunar"; }
 
       // ─── Media Controls ───

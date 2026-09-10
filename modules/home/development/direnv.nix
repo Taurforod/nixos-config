@@ -1,13 +1,11 @@
-{ ... }:
-
-{
+{...}: {
+  # Project environments are selected by each project's .envrc.
   programs.direnv = {
     enable = true;
 
-    # Включает быструю интеграцию с Nix shell / flake.nix
+    # Cache Nix development environments between shell sessions.
     nix-direnv.enable = true;
 
-    # Интеграция с оболочками
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableFishIntegration = true;

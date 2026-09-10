@@ -1,3 +1,4 @@
+# Desktop-only applications; imported by hosts/desktop/home.nix.
 {
   pkgs,
   pkgs-unstable,
@@ -5,11 +6,11 @@
 }: {
   home.packages =
     (with pkgs; [
-      # Обслуживание дисков и ПК
-      gsmartcontrol # Графический интерфейс для проверки S.M.A.R.T. дисков
-      liquidctl # Управление СЖО (водянками), помпой и RGB на ПК
+      # Disk and hardware maintenance.
+      gsmartcontrol # GUI for drive S.M.A.R.T. diagnostics.
+      liquidctl # Control supported liquid coolers, fans, and RGB lighting.
 
-      #Media and Grafick
+      # Media, graphics, and CAD.
       obs-studio
       strawberry
       gimp
@@ -17,7 +18,6 @@
       freecad
     ])
     ++ (with pkgs-unstable; [
-      # Творчество и софт ПК
-      orca-slicer # Слайсер для 3D-принтера
+      orca-slicer # Slicer for 3D printing.
     ]);
 }

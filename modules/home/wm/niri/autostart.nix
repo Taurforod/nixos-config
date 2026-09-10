@@ -1,19 +1,19 @@
-# modules/home/niri/autostart.nix
 {pkgs, ...}: ''
-  // Окружение Wayland (импорт переменных в dbus)
+  // Share the Wayland session environment with D-Bus and systemd user services.
   spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DISPLAY"
 
   spawn-at-startup "xwayland-satellite"
 
-  // Графическая оболочка Noctalia v5
   spawn-at-startup "noctalia"
 
-  // KDE Polkit агент для аутентификации (запросы пароля)
+  // Start the KDE authentication agent for privilege prompts.
   spawn-at-startup "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
 
   spawn-at-startup "easyeffects"
 
   spawn-at-startup "Telegram"
+
+  // Discord is installed by modules/system/graphical/flatpak.nix.
   spawn-at-startup "flatpak" "run" "com.discordapp.Discord"
 
 ''

@@ -8,13 +8,15 @@
     ];
 
     config = {
-      # Оптимизация Vulkan и нативный HDR
+      # Use the gpu-next renderer with Vulkan.
       vo = "gpu-next";
       gpu-api = "vulkan";
       hwdec = "auto-safe";
+
+      # Request output colorspace signaling where supported.
       target-colorspace-hint = "yes";
 
-      # Кастомный интерфейс uosc
+      # Use uosc for playback controls and hide the window border.
       osd-bar = "no";
       border = "no";
 

@@ -1,3 +1,4 @@
+# User gaming tools; Steam and controller support are configured in modules/system/games.nix.
 {
   pkgs,
   pkgs-unstable,

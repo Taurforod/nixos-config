@@ -7,12 +7,12 @@
       palette = "noctalia";
       add_newline = true;
 
+      # Two-line prompt: context and environments above, command entry below.
       format = ''
         $username$hostname$directory$git_branch$git_status$nix_shell$nodejs$python
         $character
       '';
 
-      # Пути к папкам
       directory = {
         style = "bold sky";
         truncation_length = 3;
@@ -20,46 +20,40 @@
         read_only = " 🔒";
       };
 
-      # Ветка Git
       git_branch = {
         symbol = "🌱 ";
         style = "bold mauve";
       };
 
-      # Статус Git репозитория
       git_status = {
         style = "bold red";
         format = "([\\[$all_status$ahead_behind\\]]($style) )";
       };
 
-      # --- Окружение NIX (Nix Shell / Flake Shell) ---
       nix_shell = {
         symbol = "❄️ ";
         style = "bold blue";
         format = "via [$symbol$state( \\($name\\))]($style) ";
       };
 
-      # --- Окружение JavaScript / Node.js ---
       nodejs = {
         symbol = "⚡ ";
         style = "bold green";
         format = "via [$symbol($version )]($style) ";
       };
 
-      # --- Окружение Python ---
       python = {
         symbol = "🐍 ";
         style = "bold yellow";
         pyenv_prefix = "venv ";
       };
 
-      # Стрелочка ввода команды
       character = {
         success_symbol = "[❯](bold green)";
         error_symbol = "[❯](bold red)";
       };
 
-      # Все встроенные цветовые палитры
+      # Local palette definitions; the palette setting above selects the active one.
       palettes = {
         catppuccin_mocha = {
           rosewater = "#f5e0dc";

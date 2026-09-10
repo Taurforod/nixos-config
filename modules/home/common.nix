@@ -1,12 +1,11 @@
+# Shared Home Manager settings; flake.nix also loads hosts/<name>/home.nix.
 {
   config,
   lib,
   pkgs,
   ...
 }: let
-  # dark и light сейчас оба равны kora-pgrey.
-  # Значение берётся из Stylix, поэтому его не нужно
-  # отдельно дублировать в GTK и KDE.
+  # Reuse the system Stylix icon theme; both polarities currently select kora-pgrey.
   iconThemeName = config.stylix.icons.dark;
 in {
   imports = [
@@ -20,33 +19,26 @@ in {
   ];
 
   gtk = {
-    # Это критически важно при stylix.autoEnable = false.
-    # Stylix уже передаёт gtk.iconTheme из системного
-    # stylix.icons, но без gtk.enable Home Manager
-    # не создаёт GTK settings.ini и запись dconf.
+    # Enable GTK settings generation explicitly because Stylix autoEnable is disabled.
+    # The icon theme is supplied by the system Stylix configuration.
     enable = true;
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   };
 
+  # Keep the GTK appearance dark and select the Catppuccin theme installed system-wide.
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = lib.mkForce "prefer-dark";
       gtk-theme =
         lib.mkForce "catppuccin-mocha-lavender-standard";
 
-      # icon-theme здесь не дублируется.
-      # Home Manager автоматически получает его из
-      # config.gtk.iconTheme, заполненного Stylix.
+      # Home Manager writes icon-theme from gtk.iconTheme.
     };
   };
 
-  # Dolphin и другие KDE-приложения читают тему иконок
-  # из группы [Icons] файла ~/.config/kdeglobals.
-  #
-  # Использование kwriteconfig6 изменяет только один ключ.
-  # Весь kdeglobals не передаётся под управление Home Manager,
-  # поэтому Plasma сможет хранить в нём остальные настройки.
+  # Update only KDE's icon theme after Home Manager has installed its files.
+  # Leave the rest of kdeglobals writable for Plasma and KDE applications.
   home.activation.setKdeIconTheme = lib.hm.dag.entryAfter ["writeBoundary"] ''
     run ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 \
       --file kdeglobals \
@@ -55,9 +47,9 @@ in {
       ${lib.escapeShellArg iconThemeName}
   '';
 
+  # Firefox appearance is configured in internet/firefox.nix.
   stylix.targets.firefox.enable = false;
 
-  # Stylix не управляет стилем и палитрой Qt.
-  # Dolphin продолжает использовать штатную KDE/Breeze-интеграцию.
+  # Keep Plasma's native KDE/Breeze integration for Qt applications.
   stylix.targets.qt.enable = false;
 }

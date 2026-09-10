@@ -1,11 +1,10 @@
-# modules/home/niri/rules.nix
-{ ... }: ''
+{...}: ''
    window-rule {
-       geometry-corner-radius 10 // Set every window radius to 10
+       geometry-corner-radius 10
        clip-to-geometry true
    }
 
-    // if you use steam you will probably like these
+   // Float Steam windows except the main window.
    window-rule {
        match app-id="steam"
        exclude title=r#"^[Ss]team$"#
@@ -18,6 +17,7 @@
       open-focused false
    }
 
+   // Place Noctalia's wallpaper behind transparent workspaces.
    layer-rule {
        match namespace="^noctalia-wallpaper*"
        place-within-backdrop true
@@ -30,9 +30,7 @@
 
   // Open the Firefox picture-in-picture player as floating by default.
   window-rule {
-     // This app-id regular expression will work for both:
-     // - host Firefox (app-id is "firefox")
-     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    // Match both native and Flatpak Firefox app IDs.
      match app-id=r#"firefox$"# title="^Picture-in-Picture$"
      open-floating true
   }

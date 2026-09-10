@@ -10,12 +10,13 @@
   programs.firefox = {
     enable = true;
 
+    # Native helpers used by the PWA and Plasma Integration extensions below.
     nativeMessagingHosts = [
       pkgs.firefoxpwa
       pkgs.kdePackages.plasma-browser-integration
     ];
 
-    # Официальный механизм установки через политики (без update_url!)
+    # Install extensions through Firefox policies; force_installed prevents user removal.
     policies = {
       ExtensionSettings = {
         # uBlock Origin
@@ -53,7 +54,7 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/pwas-for-firefox/latest.xpi";
           installation_mode = "force_installed";
         };
-        # Тема Catppuccin Mocha - Mauve
+        # Catppuccin Mocha - Mauve theme.
         "{76aabc99-c1a8-4c1e-832b-d4f2941d5a7a}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
           installation_mode = "force_installed";
@@ -65,7 +66,7 @@
       isDefault = true;
 
       settings = {
-        "browser.startup.page" = 3;
+        "browser.startup.page" = 3; # Restore the previous session.
         "extensions.pocket.enabled" = false;
       };
     };

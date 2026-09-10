@@ -1,8 +1,8 @@
 {pkgs-unstable, ...}: {
-  # Инструменты разработчика для Zed
+  # Tools used by the Nix language configuration below.
   home.packages = with pkgs-unstable; [
-    nixd # Языковой сервер (LSP) для Nix
-    alejandra # Форматировщик Nix, указанный в настройках
+    nixd # Nix language server.
+    alejandra # External Nix formatter.
   ];
 
   programs.zed-editor = {
@@ -15,7 +15,6 @@
       "nix"
     ];
 
-    # Актуальная конфигурация из CachyOS
     userSettings = {
       cli_default_open_behavior = "existing_window";
       agent = {
@@ -23,7 +22,7 @@
         favorite_models = [];
         model_parameters = [];
       };
-      disable_ai = false; # Отключение AI-функционала
+      disable_ai = false;
       theme = "Catppuccin Mocha";
       icon_theme = "Catppuccin Mocha";
       base_keymap = "VSCode";
@@ -61,6 +60,8 @@
             language_server = {name = "ruff";};
           };
         };
+
+        # Use nixd for language features and pass the buffer to Alejandra through stdin.
         Nix = {
           language_servers = ["nixd" "!nil"];
           formatter = {

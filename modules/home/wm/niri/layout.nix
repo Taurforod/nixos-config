@@ -1,11 +1,8 @@
-# modules/home/niri/layout.nix
-{ pkgs, ... }:
-''
+{pkgs, ...}: ''
   layout {
-      gaps 10 // Gap between windows
-      center-focused-column "never" // Don’t auto-center focused column
-
-      background-color "transparent" // <- needed for noctalia-shell to set wallpaper
+      gaps 10
+      center-focused-column "never"
+      background-color "transparent" // Let Noctalia's wallpaper show through.
 
 
 
@@ -17,23 +14,23 @@
 
       struts {}
 
-		// Рамки фокуса (это законное свойство макета)
-		focus-ring {
-			width 2
-			active-color "#b4befe"
-			inactive-color "#313244"
-		        }
+  focus-ring {
+     width 2
+     active-color "#b4befe"
+     inactive-color "#313244"
+      }
 
       shadow {
       on
-      softness 20          // Размытие тени
-      spread 2             // Размер тени
-      offset x=0 y=8       // Смещение тени по X и Y
-      color "#00000077"    // Цвет и прозрачность
+      softness 20
+      spread 2
+      offset x=0 y=8
+      color "#00000077"    // Black with alpha in the final two hex digits.
   }
 
   }
 
+  // Shared animation timings and spring parameters.
   animations {
       workspace-switch {
           spring damping-ratio=0.88 stiffness=1400 epsilon=0.0001

@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     rnnoise-plugin
 
-    # Удаляем ярлыки приложений, оставляя только LV2-плагины для EasyEffects
+    # Hide LSP application launchers while keeping the plugins available to EasyEffects.
     (lsp-plugins.overrideAttrs (oldAttrs: {
       postInstall =
         (oldAttrs.postInstall or "")
@@ -16,6 +16,6 @@
     }))
   ];
 
-  # Пресет микрофона
+  # Install the microphone preset; automatic preset loading is not configured here.
   xdg.configFile."easyeffects/input/mic-main.json".source = ./presets/mic-main.json;
 }
