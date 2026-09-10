@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # Provide thumbnail generation, virtual filesystem access, and disk management.
   services.tumbler.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -11,6 +12,7 @@
     ];
   };
 
+  # Archive, video thumbnail, and removable-media helpers.
   environment.systemPackages = with pkgs; [
     file-roller
     ffmpegthumbnailer

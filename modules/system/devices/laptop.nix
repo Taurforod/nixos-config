@@ -1,12 +1,12 @@
 {...}: {
   services.logind.settings.Login = {
-    # От батареи: переход в сон.
+    # Suspend on lid close when neither the external-power nor docked rule applies.
     HandleLidSwitch = "suspend";
 
-    # От сети: блокировка экрана без перехода в сон.
+    # Lock on lid close while connected to external power.
     HandleLidSwitchExternalPower = "lock";
 
-    # С внешним монитором или в док-станции: продолжать работу.
+    # Ignore lid close when docked or when multiple displays are connected.
     HandleLidSwitchDocked = "ignore";
   };
 }

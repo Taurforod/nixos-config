@@ -4,10 +4,10 @@
   inputs,
   ...
 }: let
-  # Берем итоговые настройки после слияния базового модуля и конфигурации конкретного хоста
+  # Read the final settings after NixOS module definitions have been merged.
   cfgSettings = config.programs.noctalia-greeter.settings;
 
-  # Автоматически добавляем корректный путь к курсору в структуру TOML
+  # Preserve the configured cursor settings while replacing its path with a Nix store path.
   finalSettings =
     cfgSettings
     // {
@@ -24,7 +24,7 @@ in {
     inputs.noctalia-greeter.nixosModules.default
   ];
 
-  # Базовые настройки ПО УМОЛЧАНИЮ для всех компьютеров
+  # Shared greeter settings for all hosts.
   programs.noctalia-greeter = {
     enable = true;
     greeter-args = "";
@@ -45,7 +45,8 @@ in {
     };
   };
 
-  # Универсальный скрипт подкладывания TOML-файла
+  # Install the generated TOML with greeter ownership on each system activation.
+  # Manual edits to this file are overwritten on the next activation.
   system.activationScripts.noctaliaGreeterFix = ''
     mkdir -p /var/lib/noctalia-greeter
     chown greeter:greeter /var/lib/noctalia-greeter 2>/dev/null || true

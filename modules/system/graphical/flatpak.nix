@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: let
+  # System-wide apps to install from Flathub.
+  # Removing an entry does not uninstall the application.
   flatpakApps = [
     "com.calibre_ebook.calibre"
     "com.discordapp.Discord"
@@ -17,6 +19,7 @@ in {
     kdePackages.flatpak-kcm
   ];
 
+  # At boot, add Flathub if needed and install missing apps from the list.
   systemd.services.flatpak-install = {
     description = "Install declared system Flatpak applications";
     wantedBy = ["multi-user.target"];
@@ -49,6 +52,7 @@ in {
     '';
   };
 
+  # Update all system-wide Flatpak apps and runtimes, including those installed manually.
   systemd.services.flatpak-update = {
     description = "Update system Flatpak applications";
     after = ["network-online.target"];
@@ -65,6 +69,7 @@ in {
     '';
   };
 
+  # Run weekly and catch up on missed runs, with up to one hour of randomized delay.
   systemd.timers.flatpak-update = {
     description = "Weekly system Flatpak update";
     wantedBy = ["timers.target"];

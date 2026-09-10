@@ -7,6 +7,7 @@
     inputs.stylix.nixosModules.stylix
   ];
 
+  # Exclude these Stylix integrations entirely.
   disabledModules = [
     "${inputs.stylix}/modules/regreet/nixos.nix"
     "${inputs.stylix}/modules/kmscon/nixos.nix"
@@ -32,12 +33,15 @@
   stylix = {
     enable = true;
 
-    # Все цели включаются только явно.
+    # Enable Stylix targets explicitly.
     autoEnable = false;
+
+    # Suppress Stylix release compatibility checks.
     enableReleaseChecks = false;
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
+    # Generate a solid background matching the Catppuccin Mocha base color.
     image = pkgs.runCommand "bg.png" {} ''
       ${pkgs.imagemagick}/bin/convert \
         -size 1920x1080 \
@@ -75,6 +79,7 @@
       };
     };
 
+    # Use the same icon theme for both polarities; modules/home/common.nix also reads it.
     icons = {
       enable = true;
       package = pkgs.kora-icon-theme;
@@ -87,13 +92,11 @@
       console.enable = true;
       gnome.enable = true;
 
-      # На уровне NixOS включает инфраструктуру dconf,
-      # необходимую пользовательской GTK-конфигурации.
+      # Enable dconf support required by Home Manager's GTK configuration.
       gtk.enable = true;
 
-      # Системная интеграция Qt с установленной Plasma.
-      # Пользовательская цветовая стилизация Qt отдельно
-      # отключена в common.nix.
+      # Configure system Qt integration for Plasma.
+      # Home Manager's Stylix Qt target is disabled in modules/home/common.nix.
       qt.enable = true;
     };
   };

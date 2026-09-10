@@ -1,3 +1,4 @@
+# Shared NixOS configuration loaded for every host by flake.nix.
 {
   pkgs,
   lib,
@@ -14,7 +15,7 @@
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "ru_RU.UTF-8";
 
-  # Описание учетной записи пользователя
+  # The login name comes from flake.nix and is also used by Home Manager.
   users.users.${username} = {
     isNormalUser = true;
     description = lib.toSentenceCase username;
@@ -23,7 +24,6 @@
     shell = pkgs.fish;
   };
 
-  # Настройки Nix и Flakes
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.variables.EDITOR = "micro";
@@ -37,20 +37,19 @@
     };
   };
 
-  # Отключено: ananicy-cpp тестировался для приоритетов процессов, временно не используется.
+  # Disabled after testing process priority management; retained for future use.
   services.ananicy = {
     enable = false;
     package = pkgs.ananicy-cpp;
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
 
-  # Системные пакеты
   environment.systemPackages = with pkgs; [
-    # Аварийный минимальный набор консоли (доступен в TTY и под root)
+    # Basic recovery tools available in a TTY and to root.
     micro
     git
 
-    # Диагностика и базовые утилиты
+    # System diagnostics and archive utilities.
     psmisc
     pciutils
     usbutils
