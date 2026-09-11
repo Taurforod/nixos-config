@@ -69,4 +69,9 @@
       "device.routes.default-sink-volume" = 1.0;
     };
   };
+
+  # WAVE 75 must not be classified as a joystick.
+  services.udev.extraRules = ''
+    SUBSYSTEM=="input", ATTRS{idVendor}=="36b0", ATTRS{idProduct}=="3009", ENV{ID_INPUT_JOYSTICK}="0"
+  '';
 }
