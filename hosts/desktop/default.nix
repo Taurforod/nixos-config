@@ -63,4 +63,10 @@
   system.stateVersion = "26.05";
 
   programs.coolercontrol.enable = true;
+
+  services.pipewire.wireplumber.extraConfig."90-desktop-volume" = {
+    "wireplumber.settings" = {
+      "device.routes.default-sink-volume" = 1.0;
+    };
+  };
 }
