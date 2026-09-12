@@ -9,8 +9,6 @@
   // Start the KDE authentication agent for privilege prompts.
   spawn-at-startup "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
 
-  spawn-at-startup "easyeffects"
-
   spawn-at-startup "Telegram"
 
   // Discord is installed by modules/system/graphical/flatpak.nix.
