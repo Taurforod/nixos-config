@@ -35,6 +35,12 @@ in {
       NIRI_CONFIG_BG_COLOR = "transparent";
     };
 
+    # Open directories in Thunar in the Niri session.
+    xdg.configFile."niri-mimeapps.list".text = ''
+      [Default Applications]
+      inode/directory=thunar.desktop;
+    '';
+
     xdg.configFile."niri/config.kdl" = {
       force = true; # Replace an existing config.kdl when activating Home Manager.
       text = ''
