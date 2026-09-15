@@ -28,6 +28,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.variables.EDITOR = "micro";
   programs.fish.enable = true;
+  programs.nix-ld.enable = true;
 
   programs.nh = {
     enable = true;
