@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./direnv.nix
     ./godot.nix
@@ -9,5 +7,6 @@
 
   home.packages = with pkgs; [
     nvd
+    uv
   ];
 }
