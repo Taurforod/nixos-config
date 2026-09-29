@@ -1,6 +1,7 @@
 # System integration for Niri; user configuration is in modules/home/wm/niri.
 {
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }: {
@@ -11,7 +12,7 @@
 
   environment.systemPackages = [
     # X11 application support; started by modules/home/wm/niri/autostart.nix.
-    pkgs.xwayland-satellite
+    pkgs-unstable.xwayland-satellite
   ];
 
   xdg.portal = {
