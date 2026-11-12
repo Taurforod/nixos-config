@@ -12,10 +12,10 @@
   home.packages =
     (with pkgs; [
       gamescope
+      lutris
     ])
     ++ (with pkgs-unstable; [
       heroic
-      lutris
       protonplus
     ]);
 }
