@@ -9,6 +9,22 @@
         sort_by = "alphabetical";
         sort_dir_first = true;
       };
+
+      opener.appimage = [
+        {
+          run = ''appimage-run "$@"'';
+          orphan = true;
+          desc = "Run AppImage";
+          for = "linux";
+        }
+      ];
+
+      open.prepend_rules = [
+        {
+          mime = "application/vnd.appimage";
+          use = "appimage";
+        }
+      ];
     };
   };
 

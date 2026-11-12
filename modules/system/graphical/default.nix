@@ -12,6 +12,8 @@
     ./flatpak.nix
   ];
 
+  programs.appimage.enable = true;
+
   services.xserver = {
     enable = true;
 

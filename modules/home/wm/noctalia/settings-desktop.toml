@@ -6,7 +6,7 @@ order = [ "default" ]
 
     [bar.default]
     background_opacity = 0.79999998211860657
-    center = [ "workspaces", "cat" ]
+    center = [ "clock" ]
     color = "primary"
     end = [
         "media",
@@ -26,12 +26,17 @@ order = [ "default" ]
     margin_ends = 2
     padding = 10
     scale = 1.1500000096857548
-    start = [ "launcher", "clock", "temp", "ram", "sysmon" ]
+    start = [ "launcher", "workspaces", "temp", "ram", "sysmon", "cat" ]
     thickness = 38
 
         [bar.default.monitor.DP-3]
         auto_hide = true
         reserve_space = false
+
+[calendar]
+
+[control_center.calendar]
+show_events_card = false
 
 [desktop_widgets]
 schema_version = 2
@@ -58,6 +63,8 @@ widget_order = [
     cx = 1416.0
     cy = 128.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "clock"
 
@@ -73,6 +80,8 @@ widget_order = [
     cx = 1432.0
     cy = 283.89999389648438
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "weather"
 
@@ -87,6 +96,8 @@ widget_order = [
     cx = 768.0
     cy = 784.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -103,6 +114,8 @@ widget_order = [
     cx = 1864.0
     cy = 152.0
     output = "HDMI-A-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "clock"
 
@@ -119,6 +132,8 @@ widget_order = [
     cx = 1864.0
     cy = 152.0
     output = "DP-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "clock"
 
@@ -135,6 +150,8 @@ widget_order = [
     cx = 1896.0
     cy = 320.0
     output = "HDMI-A-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "weather"
 
@@ -150,6 +167,8 @@ widget_order = [
     cx = 1896.0
     cy = 320.0
     output = "DP-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "weather"
 
@@ -165,6 +184,8 @@ widget_order = [
     cx = 1024.0
     cy = 1040.0
     output = "HDMI-A-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = -0.0
     type = "audio_visualizer"
 
@@ -182,6 +203,8 @@ widget_order = [
     cx = 1024.0
     cy = 1040.0
     output = "DP-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = -0.0
     type = "audio_visualizer"
 
@@ -249,6 +272,8 @@ widget_order = [
     cx = 1024.0
     cy = 818.0
     output = "DP-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "login_box"
 
@@ -274,6 +299,8 @@ widget_order = [
     cx = 1024.0
     cy = 816.0
     output = "DP-3"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "login_box"
 
@@ -299,6 +326,8 @@ widget_order = [
     cx = 1024.0
     cy = 818.0
     output = "HDMI-A-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "login_box"
 
@@ -324,6 +353,8 @@ widget_order = [
     cx = 768.0
     cy = 605.5
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "login_box"
 
@@ -349,6 +380,8 @@ widget_order = [
     cx = 768.0
     cy = 120.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "clock"
 
@@ -358,6 +391,8 @@ widget_order = [
     cx = 768.0
     cy = 797.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "media_player"
 
@@ -367,6 +402,8 @@ widget_order = [
     cx = 768.0
     cy = 304.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "weather"
 
@@ -376,6 +413,8 @@ widget_order = [
     cx = 1024.0
     cy = 304.0
     output = "DP-3"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "clock"
 
@@ -392,6 +431,8 @@ widget_order = [
     cx = 1024.0
     cy = 1040.0
     output = "DP-3"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -408,6 +449,8 @@ widget_order = [
     cx = 1024.0
     cy = 304.0
     output = "DP-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "clock"
 
@@ -424,6 +467,8 @@ widget_order = [
     cx = 1024.0
     cy = 304.0
     output = "HDMI-A-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "clock"
 
@@ -440,6 +485,8 @@ widget_order = [
     cx = 1024.0
     cy = 1040.0
     output = "DP-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -456,6 +503,8 @@ widget_order = [
     cx = 1024.0
     cy = 1048.0
     output = "HDMI-A-1"
+    placement_height = 1152.0
+    placement_width = 2048.0
     rotation = 0.0
     type = "audio_visualizer"
 
@@ -472,14 +521,44 @@ monitors = [ "DP-1", "HDMI-A-1" ]
 [osd]
 monitors = [ "DP-1", "HDMI-A-1" ]
 
+[plugin_settings."aristides/udiskie"]
+file_manager_cmd = "thunar"
+
 [plugins]
 enabled = [ "dotnetrob/cat", "aristides/udiskie" ]
 
 [shell]
 app_icon_color = "primary"
+avatar_path = "/home/taurforod/Изображения/photo_2026-08-11_15-18-36.jpg"
 font_family = "Inter"
 password_style = "random"
 polkit_agent = true
+
+    [shell.launcher]
+    pinned = [
+        "bitwarden",
+        "btop",
+        "chromium-browser",
+        "com.discordapp.Discord",
+        "org.telegram.desktop",
+        "net.lutris.battlenet-1",
+        "com.heroicgameslauncher.hgl",
+        "yazi",
+        "me.amankhanna.opendeck",
+        "steam",
+        "org.qbittorrent.qBittorrent",
+        "com.spotify.Client",
+        "obsidian",
+        "com.vysp3r.ProtonPlus",
+        "org.godotengine.Godot4.7",
+        "org.kde.discover",
+        "at.vintagestory.VintageStory",
+        "com.adamcake.Bolt",
+        "brave-browser",
+        "md.obsidian.Obsidian",
+        "bbport",
+        "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default"
+    ]
 
     [shell.panel]
     list_item_background = true
@@ -498,7 +577,7 @@ wallpaper_scheme = "m3-content"
     builtin_ids = [ "btop" ]
 
 [wallpaper]
-directory = "/home/taurforod/Загрузки/wallpapir"
+directory = "/home/taurforod/nixos-config/assets/wallpapers"
 per_monitor_directories = true
 
     [wallpaper.automation]
@@ -506,10 +585,10 @@ per_monitor_directories = true
     interval_seconds = 600
 
     [wallpaper.default]
-    path = "/home/taurforod/Загрузки/wallpapir/0f6oxa9y9jlb1.png"
+    path = "/home/taurforod/nixos-config/assets/wallpapers/wallhaven-zp8o3j.jpg"
 
     [wallpaper.last]
-    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-qr2gvq.jpg"
+    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-m38m81.png"
 
     [wallpaper.monitor.DP-1]
     directory = "/home/taurforod/Загрузки/wallpapir"
@@ -521,13 +600,13 @@ per_monitor_directories = true
     directory = "/home/taurforod/Загрузки/wallpapir"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-qr2gvq.jpg"
+    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-x6x3gz.png"
 
     [wallpaper.monitors.DP-3]
-    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-wqj666.png"
+    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-m38m81.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-6l2rk7.jpg"
+    path = "/home/taurforod/Загрузки/wallpapir/wallhaven-y8v2g7.jpg"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/taurforod/nixos-config/assets/wallpapers/wallhaven-zp8o3j.jpg"
